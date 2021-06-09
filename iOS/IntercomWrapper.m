@@ -145,9 +145,8 @@ RCT_EXPORT_METHOD(displayMessageComposer :(RCTPromiseResolveBlock)resolve :(RCTP
     NSLog(@"displayMessageComposer");
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *controller = RCTPresentedViewController();
-        [RCTUtilsUIOverride setPresentedViewController:controller];
-        [Intercom presentMessageComposer];
+       
+        [Intercom presentMessageComposer:@""];
     });
 
     resolve([NSNull null]);
@@ -157,9 +156,7 @@ RCT_EXPORT_METHOD(displayMessageComposerWithInitialMessage:(NSString*)message re
     NSLog(@"displayMessageComposerWithInitialMessage");
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *controller = RCTPresentedViewController();
-        [RCTUtilsUIOverride setPresentedViewController:controller];
-        [Intercom presentMessageComposerWithInitialMessage:message];
+        [Intercom presentMessageComposer:@""];
     });
 
     resolve([NSNull null]);
@@ -170,13 +167,13 @@ RCT_EXPORT_METHOD(displayConversationsList :(RCTPromiseResolveBlock)resolve :(RC
     NSLog(@"displayConversationsList");
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *controller = RCTPresentedViewController();
-        [RCTUtilsUIOverride setPresentedViewController:controller];
-        [Intercom presentConversationList];
+
+        [Intercom presentMessenger];
     });
 
     resolve([NSNull null]);
 };
+
 
 // Available as NativeModules.IntercomWrapper.getUnreadConversationCount
 RCT_EXPORT_METHOD(getUnreadConversationCount :(RCTPromiseResolveBlock)resolve :(RCTPromiseRejectBlock)reject) {
